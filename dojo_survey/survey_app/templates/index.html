@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Dojo Survey</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    
+    <div id="wrapper">
+        <h1>SURVEY</h1>
+
+        <form action="/result" method="POST">
+            {% csrf_token %}
+            <label for="name">Your Name:</label>
+            <input type="text" name="name" id="name">
+            <br>
+            <label for="location">Dojo Location:</label>
+            <select name="location" id="location">
+                <option value="valhalla">Valhalla</option>
+                <option value="midgard">Midgard</option>
+                <option value="helheim">Helheim</option>
+                <option value="jotunheim">Jotunheim</option>
+            </select>
+            <br>
+            <label for="language">Favorite Language:</label>
+            <select name="language" id="language">
+                <option value="c++">C++</option>
+                <option value="python">Python</option>
+                <option value="javascript">JavaScript</option>
+                <option value="fortran">FORTRAN</option>
+            </select>
+            <br>
+            <label for="gender">Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="male" checked="checked">
+                <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br>
+            <input type="radio" id="prefer_not_to_say" name="gender" value="prefer_not_to_say">
+                <label for="prefer_not_to_say">Prefer Not to Say</label>
+            <br>
+            <label for="drink">Acceptable Drinks:</label><br>
+            <input type="checkbox" id="coffee" name="drink" value="coffee">
+                <label for="coffee">Coffee</label><br>
+            <input type="checkbox" id="tea" name="drink" value="tea">
+                <label for="tea">Tea</label><br>
+            <input type="checkbox" id="faygo" name="drink" value="faygo">
+                <label for="faygo">Faygo</label><br>
+            <input type="checkbox" id="tomato_juice" name="drink" value="tomato_juice">
+                <label for="tomato_juice">Tomato Juice</label>
+            <br>
+            <label for="comment">Comment (optional):</label><br>
+            <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
+            <button type="submit">SUBMIT</button>
+        </form>
+
+    </div> <!-- End of Wrapper -->
+</body>
+</html>

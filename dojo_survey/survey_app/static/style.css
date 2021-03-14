@@ -1,0 +1,47 @@
+#wrapper{
+    border: 5px solid lightblue;
+    /* width: 400px; */
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0% 10%;
+    max-width: 400px;
+    font-weight: bold;
+
+}
+#wrapper h1{
+    color: red;
+    width: 100%;
+    text-align: center;
+}
+#go_back{
+    background-color: aqua;
+    padding: 10px;
+    text-decoration: none;
+
+    color: black;
+    box-shadow: 2px 2px black;
+    text-align: center;
+    width: 100%;
+}
+
+input[type="checkbox"], input[type="radio"]{
+    margin-left: 30px;
+}
+
+label, option, input, select{
+    margin-bottom: 10px;
+}
+textarea{
+    resize: vertical;
+}
+button{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    background-color: rgb(7, 233, 7);
+    box-shadow: black 1px 1px;
+    font-size: 14px;
+}

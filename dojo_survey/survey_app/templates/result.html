@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Dojo Survey Result</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Submitted Info</h1>
+        <div id="user_info">
+            <p>Name: {{name}}</p>
+            <p>Location: {{location}}</p>
+            <p>Language: {{language}}</p>
+            <p>Gender: {{gender}}</p>
+            <p>Drinks: {{drink}}</p>
+            <p>Comment: {{comment}}</p>
+        </div>
+        <a id="go_back" href="index">Go Back</a>
+    </div>
+
+</body>
+</html>
