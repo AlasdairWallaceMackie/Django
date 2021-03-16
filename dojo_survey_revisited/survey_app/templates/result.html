@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Dojo Survey Result</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Submitted Info</h1>
+        <table id="user_info">
+            <tr>
+                <td>Name:</td>
+                <td>{{request.session.name}}</td>
+            </tr>
+            <tr>
+                <td>Location:</td>
+                <td>{{request.session.location}}</td>
+            </tr>
+            <tr>
+                <td>Language:</td>
+                <td>{{request.session.language}}</td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>{{request.session.gender}}</td>
+            </tr>
+            <tr>
+                <td>Drinks:</td>
+                <td>{{request.session.drink}}</td>
+            </tr>
+            <tr>
+                <td>Comment:</td>
+                <td>{{request.session.comment}}</td>
+            </tr>
+        </table>
+        <a id="go_back" href="/">Go Back</a>
+    </div>
+
+</body>
+</html>
