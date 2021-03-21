@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ninja Gold</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Nanum Brush Script'>
+</head>
+<body>
+    <div id="wrapper">
+        <img class="side_banner" src="{% static 'img/cherry_blossom_banner.jpeg' %}" alt="cherry blossom">
+        <div id="main_content">
+            <h1>Ninja Gold</h1>
+            <label for="player_gold">Your Gold:</label>
+            <textarea rows="1" cols="10" readonly>{{request.session.gold}}</textarea>
+            
+            <div id="location_wrapper">
+                <form class="location" action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <h3>Farm</h3>
+                    <p>(Earns 10-20 gold)</p>
+                    <input type="hidden" id="farm" name="location" value="farm">
+                    <input type="submit" value="Find Gold!">
+                </form>
+                <form class="location" action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <h3>Cave</h3>
+                    <p>(Earns 5-10 gold)</p>
+                    <input type="hidden" id="cave" name="location" value="cave">
+                    <input type="submit" value="Find Gold!">
+                </form>
+                <form class="location" action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <h3>House</h3>
+                    <p>(Earns 2-5 gold)</p>
+                    <input type="hidden" id="house" name="location" value="house">
+                    <input type="submit" value="Find Gold!">
+                </form>
+                <form class="location" action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <h3>Casino</h3>
+                    <p>(Earns/takes 0-50 gold)</p>
+                    <input type="hidden" id="casino" name="location" value="casino">
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+
+            <div id="activities_wrapper">
+                <label for="activities">Activities:</label>
+                <div name="activities" id="activities_textbox">
+                    {% autoescape off %}
+                    {{request.session.activity_text}}
+                    {% endautoescape %}
+                </div>
+            </div>
+            <form action="/reset">
+                {% csrf_token %}
+                <input id="reset" type="submit" value="RESET">
+            </form>
+        </div>
+        <img class="side_banner" src="{% static 'img/cherry_blossom_banner.jpeg' %}" alt="cherry blossom">
+    </div>
+
+
+</body>
+</html>

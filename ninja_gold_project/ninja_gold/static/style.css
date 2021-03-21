@@ -1,0 +1,85 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrapper{
+    background-color: rgb(169,234,233);
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+}
+#main_content{
+    display: inline-flex;
+    flex-wrap: wrap;
+    text-align: center;
+    font-family: "Nanum Brush Script";
+    justify-content: space-around;
+    width: 800px;
+    padding: 10px;
+}
+#location_wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+#activities_wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#activities_textbox{
+    background-color: white;
+    border: solid black 1px;
+    width: 560px;
+    height: 150px;
+    overflow: auto;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 22px;
+}
+#reset{
+    margin-top: 10px;
+}
+
+.side_banner{
+    display: inline-block;
+    width: 180px;
+}
+.location{
+    display: block;
+    background-color: rgb(239,195,193);
+    border: 3px solid black;
+    box-sizing: border-box;
+    width: 150px;
+    height: 150px;
+    word-wrap: break-word;
+    margin: 20px;
+}
+
+h1{
+    font-size: 70px;
+    width: 100%;
+    border-bottom: double black 5px;
+    margin-bottom: 20px;
+}
+h3{
+    font-size: 50px;
+}
+p{
+    font-size: 30px;
+}
+input[type="submit"]{
+    background-color: white;
+    padding: 10px;
+}
+label{
+    width: 100%;
+    font-size: 30px;
+}
+textarea{
+    resize: none;
+    margin: 0px 120px;
+}
