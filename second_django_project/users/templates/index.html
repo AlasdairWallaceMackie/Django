@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blogs, Users, Surveys</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+</head>
+<body>
+    <h1>Blogs, Users, Surveys</h1>
+    <h2>Blog Functions</h2>
+    <a href="{% url 'blogs:index' %}">Blogs index</a><br>
+    <a href="{% url 'blogs:new' %}">Blogs new</a><br>
+    <a href="{% url 'blogs:create' %}">Blogs Create (should redirect) </a><br>
+    <a href="{% url 'blogs:show' number=15 %}">Blogs Show (15)</a><br>
+    <a href="{% url 'blogs:edit' number=15 %}">Blogs Edit (15)</a><br>
+    <a href="{% url 'blogs:destroy' number=15 %}">Blogs Destroy (15) (Should redirect)</a><br>
+    <br>
+    <h2>Survey Functions</h2>
+    <a href="{% url 'surveys:index' %}">Surveys index</a><br>
+    <a href="{% url 'surveys:new' %}">Surveys new</a><br>
+    <br>
+    <h2>User Functions</h2>
+    <a href="{% url 'users:register' %}">Users register</a><br>
+    <a href="{% url 'users:login' %}">Users login</a><br>
+    <a href="{% url 'users:users' %}">Users List</a><br>
+    <a href="{% url 'users:new' %}">Users new (Should redirect)</a><br>
+
+</body>
+</html>
