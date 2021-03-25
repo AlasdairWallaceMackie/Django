@@ -1,0 +1,127 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red57\green164\blue40;\red55\green239\blue32;\red0\green0\blue0;
+\red63\green151\blue253;\red209\green113\blue37;\red184\green51\blue37;\red252\green50\blue32;\red202\green51\blue35;
+\red57\green192\blue38;\red56\green185\blue199;\red86\green32\blue244;}
+{\*\expandedcolortbl;;\cssrgb\c26425\c68732\c20500;\cssrgb\c22317\c93015\c16432;\csgray\c0;
+\cssrgb\c29888\c66838\c99559;\cssrgb\c85991\c52029\c18734;\cssrgb\c77738\c28163\c18923;\cssrgb\c100000\c29541\c16201;\cssrgb\c83898\c28665\c18024;
+\cssrgb\c25704\c77963\c19556;\cssrgb\c25544\c77008\c82022;\cssrgb\c41680\c25960\c96645;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 In [
+\f1\b \cf3 2
+\f0\b0 \cf2 ]: 
+\f1\b from
+\f0\b0 \cf4  
+\f1\b \cf5 users_app.models
+\f0\b0 \cf4  
+\f1\b \cf2 import
+\f0\b0 \cf4  *\
+\
+\cf2 In [
+\f1\b \cf3 3
+\f0\b0 \cf2 ]: \cf4 User.objects.create(first_name=\cf6 "Steve"\cf4 , last_name=\cf6 "Boogaloo"\cf4 , email_addr\
+\cf2    ...: \cf4 ess=\cf6 "s.boogaloo@netscape.net"\cf4 , age=\cf2 37\cf4 )\
+\cf7 Out[
+\f1\b \cf8 3
+\f0\b0 \cf7 ]: \cf4 <User: User object (1)>\
+\
+\cf2 In [
+\f1\b \cf3 4
+\f0\b0 \cf2 ]: \cf4 User.objects.create(first_name=\cf6 "Sally"\cf4 , last_name=\cf6 "Sawdust"\cf4 , email_addre\
+\cf2    ...: \cf4 ss=\cf6 "xX420SniperzXx@yahoo.com"\cf4 , age=\cf2 14\cf4 )\
+\cf7 Out[
+\f1\b \cf8 4
+\f0\b0 \cf7 ]: \cf4 <User: User object (2)>\
+\
+\cf2 In [
+\f1\b \cf3 5
+\f0\b0 \cf2 ]: \cf4 User.objects.create(first_name=\cf6 "Harry"\cf4 , last_name=\cf6 "Hotdog"\cf4 , email_addres\
+\cf2    ...: \cf4 s=\cf6 "hot_diggety_dog@gmail.com"\cf4 , age=\cf2 29\cf4 )\
+\cf7 Out[
+\f1\b \cf8 5
+\f0\b0 \cf7 ]: \cf4 <User: User object (3)>\
+\
+\cf2 In [
+\f1\b \cf3 6
+\f0\b0 \cf2 ]: \cf4 User.objects.all()\
+\cf7 Out[
+\f1\b \cf8 6
+\f0\b0 \cf7 ]: \cf4 <QuerySet [<User: User object (1)>, <User: User object (2)>, <User: User object (3)>]>\
+\
+\cf2 In [
+\f1\b \cf3 7
+\f0\b0 \cf2 ]: \cf4 User.objects.first()\
+\cf7 Out[
+\f1\b \cf8 7
+\f0\b0 \cf7 ]: \cf4 <User: User object (1)>\
+\
+\cf2 In [
+\f1\b \cf3 8
+\f0\b0 \cf2 ]: \cf4 User.objects.last()\
+\cf7 Out[
+\f1\b \cf8 8
+\f0\b0 \cf7 ]: \cf4 <User: User object (3)>\
+\
+\cf2 In [
+\f1\b \cf3 9
+\f0\b0 \cf2 ]: \cf4 person = User.objects.get(\cf2 id\cf4 =\cf2 3\cf4 )\
+\
+\cf2 In [
+\f1\b \cf3 10
+\f0\b0 \cf2 ]: \cf4 person.last_name=\cf6 "Pancakes"\cf4 \
+\
+\cf2 In [
+\f1\b \cf3 11
+\f0\b0 \cf2 ]: \cf4 to_delete = User.objects.get(\cf2 id\cf4 =\cf2 2\cf4 )\
+\
+\cf2 In [
+\f1\b \cf3 12
+\f0\b0 \cf2 ]: \cf4 to_delete.delete()\
+\cf7 Out[
+\f1\b \cf8 12
+\f0\b0 \cf7 ]: \cf4 (1, \{'users_app.User': 1\})\
+\
+\cf2 In [
+\f1\b \cf3 13
+\f0\b0 \cf2 ]: \cf4 person.save()\
+\
+\cf2 In [
+\f1\b \cf3 14
+\f0\b0 \cf2 ]: \cf4 to_delete.save()\
+\
+\cf2 In [
+\f1\b \cf3 15
+\f0\b0 \cf2 ]: \cf4 User.objects.all().order_by(first_name)\
+\cf9 ---------------------------------------------------------------------------\cf4 \
+\cf9 NameError\cf4                                  Traceback (most recent call last)\
+\cf10 <ipython-input-15-2773c2c3d8d2>\cf4  in \cf11 <module>\cf4 \
+\cf10 ----> 1\cf9  \cf4 User\cf12 .\cf4 objects\cf12 .\cf4 all\cf12 ().\cf4 order_by\cf12 (\cf4 first_name\cf12 )\cf4 \
+\
+\cf9 NameError\cf4 : name 'first_name' is not defined\
+\
+\cf2 In [
+\f1\b \cf3 16
+\f0\b0 \cf2 ]: \cf4 User.objects.all().order_by(\cf6 "first_name"\cf4 )\
+\cf7 Out[
+\f1\b \cf8 16
+\f0\b0 \cf7 ]: \cf4 <QuerySet [<User: User object (3)>, <User: User object (2)>, <User: User object (1)>]>\
+\
+\cf2 In [
+\f1\b \cf3 17
+\f0\b0 \cf2 ]: \cf4 User.objects.all().values()\
+\cf7 Out[
+\f1\b \cf8 17
+\f0\b0 \cf7 ]: \cf4 <QuerySet [\{'id': 1, 'first_name': 'Steve', 'last_name': 'Boogaloo', 'email_address': 's.boogaloo@netscape.net', 'age': 37, 'created_at': datetime.datetime(2021, 3, 25, 21, 12, 12, 117570, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 3, 25, 21, 12, 12, 117603, tzinfo=<UTC>)\}, \{'id': 2, 'first_name': 'Sally', 'last_name': 'Sawdust', 'email_address': 'xX420SniperzXx@yahoo.com', 'age': 14, 'created_at': datetime.datetime(2021, 3, 25, 21, 19, 8, 780333, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 3, 25, 21, 19, 8, 780349, tzinfo=<UTC>)\}, \{'id': 3, 'first_name': 'Harry', 'last_name': 'Pancakes', 'email_address': 'hot_diggety_dog@gmail.com', 'age': 29, 'created_at': datetime.datetime(2021, 3, 25, 21, 14, 43, 341482, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 3, 25, 21, 19, 2, 682412, tzinfo=<UTC>)\}]>\
+\
+\cf2 In [
+\f1\b \cf3 18
+\f0\b0 \cf2 ]: \cf4 User.objects.all().order_by(\cf6 "-first_name"\cf4 )\
+\cf7 Out[
+\f1\b \cf8 18
+\f0\b0 \cf7 ]: \cf4 <QuerySet [<User: User object (1)>, <User: User object (2)>, <User: User object (3)>]>\
+\
+\cf2 In [
+\f1\b \cf3 19
+\f0\b0 \cf2 ]: \cf4 exit()}
