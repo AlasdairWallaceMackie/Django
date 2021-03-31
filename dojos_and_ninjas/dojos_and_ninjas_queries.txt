@@ -1,0 +1,163 @@
+In [1]: from dojo_ninjas_app.models import *
+
+In [2]: Dojo.objects.create(name="Sneek Skool", city="Metropolis", state="KA")
+Out[2]: <Dojo: Dojo object (1)>
+
+In [3]: Dojo.objects.create(name="Banzai", city="Hartford", state="CT")
+Out[3]: <Dojo: Dojo object (2)>
+
+In [4]: Dojo.objects.create(name="Shuriken Academy", city="Nowhere", state="DE")
+   ...: 
+Out[4]: <Dojo: Dojo object (3)>
+
+In [5]: Dojo.objects.all().delete()
+Out[5]: (3, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 3})
+
+In [8]: Dojo.objects.create(name="Ichiban", city="Portland", state="OR")
+Out[8]: <Dojo: Dojo object (4)>
+
+In [10]: Dojo.objects.create(name="Sushi Slicers", city="Boston", state="MA")
+Out[10]: <Dojo: Dojo object (5)>
+
+In [11]: Dojo.objects.create(name="Ninjacademy", city="Ft. Lauderdale", state="F
+    ...: L")
+Out[11]: <Dojo: Dojo object (6)>
+
+In [12]: Ninja.objects.create(first_name="Steve", last_name="McQueen", dojo=Dojo
+    ...: .objects.get(id=4))
+Out[12]: <Ninja: Ninja object (1)>
+
+In [13]: Ninja.objects.create(first_name="Mister", last_name="Origami", dojo=Doj
+    ...: o.objects.get(id=4))
+Out[13]: <Ninja: Ninja object (2)>
+
+In [14]: Ninja.objects.create(first_name="Stacey", last_name="Peterson", dojo=Do
+    ...: jo.objects.get(id=4))
+Out[14]: <Ninja: Ninja object (3)>
+
+In [15]: Ninja.objects.create(first_name="Maverick", last_name="Hunter", dojo=Do
+    ...: jo.objects.get(id=5))
+Out[15]: <Ninja: Ninja object (4)>
+
+In [16]: Ninja.objects.create(first_name="Horace", last_name="Fowler", dojo=Dojo
+    ...: .objects.get(id=5))
+Out[16]: <Ninja: Ninja object (5)>
+
+In [17]: Ninja.objects.create(first_name="Charles", last_name="Smith", dojo=Dojo
+    ...: .objects.get(id=5))
+Out[17]: <Ninja: Ninja object (6)>
+
+In [18]: Ninja.objects.create(first_name="Martin", last_name="Scorsese", dojo=Do
+    ...: jo.objects.get(id=6))
+Out[18]: <Ninja: Ninja object (7)>
+
+In [19]: Ninja.objects.create(first_name="Julius", last_name="Caesar", dojo.Dojo
+    ...: .objects.get(id=6))
+  File "<ipython-input-19-d9cc478ccea3>", line 1
+    Ninja.objects.create(first_name="Julius", last_name="Caesar", dojo.Dojo.objects.get(id=6))
+                                                                                             ^
+SyntaxError: positional argument follows keyword argument
+
+
+In [20]: Ninja.objects.create(first_name="Julius", last_name="Caesar", dojo=Dojo
+    ...: .objects.get(id=6))
+Out[20]: <Ninja: Ninja object (8)>
+
+In [21]: Ninja.objects.create(first_name="Gladius", last_name="Karlsson", dojo=D
+    ...: ojo.objects.get(id=6))
+Out[21]: <Ninja: Ninja object (9)>
+
+In [22]: print(Dojo.objects.get(id=4).name)
+Ichiban
+
+In [23]: Dojo.objects.get(name="Ichiban").ninjas.all()
+Out[23]: <QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>]>
+
+In [24]: exit()
+(djangoPy3Env) Alasdair-Mac-Mini:dojo_ninjas_proj Alasdair$ python3 manage.py makemigrations
+No changes detected
+(djangoPy3Env) Alasdair-Mac-Mini:dojo_ninjas_proj Alasdair$ python3 manage.py shell
+Python 3.9.1 (v3.9.1:1e5d33e9b9, Dec  7 2020, 12:10:52) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.21.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: Dojo.objects.get(name="Ichiban").ninjas.all()
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-1-b40e33e605ca> in <module>
+----> 1 Dojo.objects.get(name="Ichiban").ninjas.all()
+
+NameError: name 'Dojo' is not defined
+
+In [2]: from dojo_ninjas_app.models import *
+
+In [3]: Dojo.objects.get(name="Ichiban").ninjas.all()
+Out[3]: <QuerySet [<Ninja id(1): Steve McQueen of Dojo: Ichiban>, <Ninja id(2): Mister Origami of Dojo: Ichiban>, <Ninja id(3): Stacey Peterson of Dojo: Ichiban>]>
+
+In [4]: print(Dojo.objects.get(id=6).name)
+Ninjacademy
+
+In [5]: Dojo.objects.get(name="Ninjacademy").all()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-5-b2fa1beea95e> in <module>
+----> 1 Dojo.objects.get(name="Ninjacademy").all()
+
+AttributeError: 'Dojo' object has no attribute 'all'
+
+In [6]: Dojo.objects.get(name="Ninjacademy")ninjas.all()
+  File "<ipython-input-6-eb104edf18ce>", line 1
+    Dojo.objects.get(name="Ninjacademy")ninjas.all()
+                                        ^
+SyntaxError: invalid syntax
+
+
+In [7]: Dojo.objects.get(name="Ninjacademy").ninjas.all()
+Out[7]: <QuerySet [<Ninja id(7): Martin Scorsese of Dojo: Ninjacademy>, <Ninja id(8): Julius Caesar of Dojo: Ninjacademy>, <Ninja id(9): Gladius Karlsson of Dojo: Ninjacademy>]>
+
+In [8]: Ninja.objects.latest('id')
+Out[8]: <Ninja id(9): Gladius Karlsson of Dojo: Ninjacademy>
+
+In [9]: Ninja.objects.get(first_name="Gladius").dojo
+Out[9]: <Dojo id(6): Ninjacademy in Ft. Lauderdale, FL>
+
+In [10]: exit()
+(djangoPy3Env) Alasdair-Mac-Mini:dojo_ninjas_proj Alasdair$ python3 manage.py makemigrations
+You are trying to add a non-nullable field 'desc' to dojo without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 2
+(djangoPy3Env) Alasdair-Mac-Mini:dojo_ninjas_proj Alasdair$ python3 manage.py makemigrations
+Migrations for 'dojo_ninjas_app':
+  dojo_ninjas_app/migrations/0003_dojo_desc.py
+    - Add field desc to dojo
+(djangoPy3Env) Alasdair-Mac-Mini:dojo_ninjas_proj Alasdair$ python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojo_ninjas_app, sessions
+Running migrations:
+  Applying dojo_ninjas_app.0003_dojo_desc... OK
+(djangoPy3Env) Alasdair-Mac-Mini:dojo_ninjas_proj Alasdair$ python3 manage.py shell
+Python 3.9.1 (v3.9.1:1e5d33e9b9, Dec  7 2020, 12:10:52) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.21.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: Dojo.objects.create(name="The Final Boss", city="Detroit", state="MI", d
+   ...: esc="Your learning ends here")
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-1-7dde76110fa8> in <module>
+----> 1 Dojo.objects.create(name="The Final Boss", city="Detroit", state="MI", desc="Your learning ends here")
+
+NameError: name 'Dojo' is not defined
+
+In [2]: from dojo_ninjas_app.models import *
+
+In [3]: Dojo.objects.create(name="The Final Boss", city="Detroit", state="MI", d
+   ...: esc="Your learning ends here")
+Out[3]: <Dojo id(7): The Final Boss in Detroit, MI>
+
+In [4]: Dojo.objects.get(id=7).desc
+Out[4]: 'Your learning ends here'
+
+In [5]: 
