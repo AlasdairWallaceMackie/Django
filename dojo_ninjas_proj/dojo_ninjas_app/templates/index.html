@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dojos & Ninjas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="forms_wrapper">
+            <form class="user_form" action="/add_dojo" method="POST">
+                {% csrf_token %}
+                <h1>Add a Dojo</h1>
+                <label for="dojo_name">Name</label>
+                <input required type="text" name="dojo_name" id="dojo_name">
+
+                <label for="dojo_city">City</label>
+                <input required type="text" name="dojo_city" id="dojo_city">
+                
+                <label for="dojo_state">State</label>
+                <select name="dojo_state" id="dojo_state">
+                    <option hidden disabled selected value=""></option>
+                    <option value="AL">AL</option>
+                    <option value="AK">AK</option>
+                    <option value="AR">AR</option>	
+                    <option value="AZ">AZ</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DC">DC</option>
+                    <option value="DE">DE</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="IA">IA</option>	
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="MA">MA</option>
+                    <option value="MD">MD</option>
+                    <option value="ME">ME</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MO">MO</option>	
+                    <option value="MS">MS</option>
+                    <option value="MT">MT</option>
+                    <option value="NC">NC</option>	
+                    <option value="NE">NE</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NM">NM</option>			
+                    <option value="NV">NV</option>
+                    <option value="NY">NY</option>
+                    <option value="ND">ND</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VT">VT</option>
+                    <option value="VA">VA</option>
+                    <option value="WA">WA</option>
+                    <option value="WI">WI</option>	
+                    <option value="WV">WV</option>
+                    <option value="WY">WY</option>
+                </select>
+                
+                <input required type="submit" value="ADD">
+            </form>
+
+            <form class="user_form" action="/add_ninja" method="POST">
+                {% csrf_token %}
+                <h1>Add a Ninja</h1>
+                <label for="first_name">First Name</label>
+                <input required type="text" name="first_name" id="first_name">
+
+                <label for="last_name">Last Name</label>
+                <input required type="text" name="last_name" id="last_name">
+
+                <label for="dojo_select">Dojo</label>
+                <select name="dojo_select" id="dojo_select">
+                    <option hidden disabled selected value=""></option>
+                    {% for dojo in all_dojos %}
+                        <option value="{{dojo.name}}">{{dojo.name}}</option>
+                    {% endfor %}
+                </select>
+
+                <input required type="submit" value="ADD">
+            </form>
+        </div>
+
+        <div id="dojo_list">
+            <h1>All the Dojos</h1>
+
+            {% for dojo in all_dojos %}
+                <form class="delete" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="dojo_to_delete" value="{{dojo.name}}">
+                    <img class="delete_button" src="{% static 'img/delete.png' %}" alt="Click to delete this Dojo">
+                    <h4>Ninjas at {{dojo.name}}: {{dojo.number_of_ninjas}}</h4>
+                </form>
+                
+                <ul>
+                    {% for ninja in dojo.ninjas.all %}
+                        <li>{{ninja.first_name}} {{ninja.last_name}}</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+            
+        </div>
+    </div>
+
+    
+    
+</body>
+</html>
