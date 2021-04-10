@@ -13,6 +13,15 @@ class Book(models.Model):
     def __repr__(self):
         return f"<Book id ({self.id}): {self.title} by {self.authors.all()}>"
 
+    def get_full_name(self):
+        return self.title
+
+    def class_name(self):
+        return self.__class__.__name__
+
+    def get_assoc_name(self):
+        return 'authors'
+
 class Author(models.Model):
     first_name = CharField(max_length=45)
     last_name = CharField(max_length=45)
@@ -23,3 +32,12 @@ class Author(models.Model):
 
     def __repr__(self):
         return f"<Author id ({self.id}): {self.first_name} {self.last_name}>"
+
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    def class_name(self):
+        return self.__class__.__name__
+
+    def get_assoc_name(self):
+        return 'books'

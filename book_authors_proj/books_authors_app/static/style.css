@@ -1,0 +1,95 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrapper{
+    background-color: #659DBD;
+    font-family: sans-serif;
+    width: 600px;
+}
+#header{
+    background-color: #8d8741;
+    text-align: center;
+}
+    #header h1{
+        padding: 20px;
+        text-decoration: overline underline;
+        text-decoration-style: double;
+    }
+#navbar{
+    background-color: #DAAD86;
+    padding: 20px 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+    #navbar a{
+        text-decoration: none;
+        background-color: #BC986A;
+        color: #FBEEC1;
+        padding: 20px;
+        box-shadow: 0px 0px 10px black;
+        }
+#main-content{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+    #main-content h2{
+        width: 100%;
+        text-align: center;
+    }
+    
+    .add-item{
+        background-color: beige;
+        display: grid;
+        vertical-align: top;
+        margin-right: 10px;
+        padding: 10px;
+    }
+        .add-item h2{
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .add-item textarea{
+            resize: none;
+        }
+        .add-item input[type=submit]{
+            margin-top: 10px;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+.db-list{
+    background-color: beige;
+    width: 40%;
+    border-collapse: collapse;
+}
+    tr, th, td{
+        border: 1px solid black;
+        padding: 5px;
+    }
+    th{
+        background-color: rgb(187, 187, 187);
+    }
+    td{
+        text-align: center;
+    }
+    tr:nth-child(even){
+        background-color: #f2f2f2;
+    }
+.star{
+    color: red;
+    font-size: 22px;
+}
+
+#info{
+    padding: 20px;
+}
+    #info ul{
+        margin-left: 40px;
+        margin-bottom: 10px;
+    }
