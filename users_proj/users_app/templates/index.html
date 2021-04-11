@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Users App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script src="{% static 'script.js' %}"></script>
+</head>
+<body>
+    
+    <div id="wrapper">
+
+        <div id="user-list">
+            <h1>All the Users</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in all_users %}
+                        <tr>
+                            <td>{{user.id}}</td>
+                            <td>{{user.first_name}} {{user.last_name}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.age}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="form-wrapper">
+            <h2>Add a User</h2>
+
+            <form id="add-user" action="/add_user" method="POST">
+                {% csrf_token %}
+
+                <table>
+                    <tr>
+                        <td><label for="first_name">First Name</label></td>
+                        <td><input required type="text" name="first_name" id="first_name"></td>
+                        <td><label for="last_name">Last Name</label></td>
+                        <td><input required type="text" name="last_name" id="last_name"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email</label></td>
+                        <td><input required type="text" name="email" id="email"></td>
+                        <td><label for="age">Age</label></td>
+                        <td><input required type="text" name="age" id="age"></td>
+                    </tr>
+                </table>
+                
+                <div class="button">
+                    <input type="submit" value="Add">
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+
+</body>
+</html>
