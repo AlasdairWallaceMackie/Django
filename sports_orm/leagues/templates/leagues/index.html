@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sports Leagues</title>
+	</head>
+	<body>
+		<h1>Sort Data</h1>
+		<a href="/">VIEW ALL DATA</a>
+		<a href="/baseball_leagues">baseball_leagues</a>
+		<a href="/womens_leagues">womens_leagues</a>
+		<a href="/hockey_type_leagues">hockey_type_leagues</a>
+		<a href="/leagues_except_football">leagues_except_football</a>
+		<a href="/conference_leagues">conference_leagues</a>
+		<a href="/atlantic_leagues">atlantic_leagues</a>
+		<a href="/dallas_teams">dallas_teams</a>
+		<a href="/raptor_teams">raptor_teams</a>
+		<a href="/city_teams">city_teams</a>
+		<a href="/teams_startswith_t">teams_startswith_t</a>
+		<a href="/allteams_alphabetical_location">allteams_alphabetical_location</a>
+		<a href="/allteams_reverse_alphabetical">allteams_reverse_alphabetical</a>
+		<a href="/lastname_cooper">lastname_cooper</a>
+		<a href="/firstname_joshua">first_name</a>
+		<a href="/cooper_no_joshua">cooper_no_joshua</a>
+		<a href="/alexander_or_wyatt">alexander_or_wyatt</a>
+
+		<a href="{% url 'make_data' %}"><h3>RECREATE DATA</h3></a>
+		
+		
+		<h1>Leagues</h1>
+		<ol>
+			{% for league in leagues %}
+				<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Teams</h1>
+		<ol>
+			{% for team in teams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Players</h1>
+		<ol>
+			{% for player in players %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+	</body>
+</html>
