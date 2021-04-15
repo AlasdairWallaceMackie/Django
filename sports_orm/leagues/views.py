@@ -1,6 +1,9 @@
+from django.db.models.query import QuerySet
 from django.db.models.query_utils import Q
 from django.shortcuts import render, redirect
 from .models import League, Team, Player
+from django.db.models import Count
+from itertools import chain
 
 from . import team_maker
 
@@ -18,6 +21,18 @@ def make_data(request):
 	team_maker.gen_players(200)
 
 	return redirect("index")
+
+def team_info(request, team_name):
+	context = {
+		'team': Team.objects.get(team_name = team_name)
+	}
+	return render(request, 'leagues/team_info.html', context)
+
+def league_info(request, league_name):
+	context = {
+		'league': League.objects.get(name = league_name)
+	}	
+	return render(request, 'leagues/league_info.html', context)
 
 def baseball_leagues(request):
 	context = {
@@ -114,3 +129,24 @@ def alexander_or_wyatt(request):
 		'players': Player.objects.filter( Q(first_name="Alexander") | Q(first_name="Wyatt"))
 	}
 	return render(request, "leagues/index.html", context)
+
+def twelve_or_more_players(request):
+	all_teams = Team.objects.annotate( number_of_players = Count('all_players') )
+	all_teams = all_teams.filter( number_of_players__gt = 12 )
+	context = {
+		'teams': all_teams,
+	}
+	return render(request, 'leagues/index.html', context)
+
+def teams_with_sophia(request):
+	context = {
+		'teams': Team.objects.filter( curr_players__first_name__contains="Sophia")
+	}
+
+	return render(request, 'leagues/index.html', context)
+
+def all_football_players(request):
+	context = {
+		'players': Player.objects.filter( curr_team__league__sport="Football" )
+	}
+	return render(request, 'leagues/index.html', context)

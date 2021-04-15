@@ -4,6 +4,8 @@ from . import views
 urlpatterns = [
 	path('', views.index, name="index"),
 	path('initialize', views.make_data, name="make_data"),
+	path('teams/<str:team_name>', views.team_info),
+	path('leagues/<str:league_name>', views.league_info),
 	path('baseball_leagues', views.baseball_leagues),
 	path('womens_leagues', views.womens_leagues),
 	path('hockey_type_leagues', views.hockey_type_leagues),
@@ -20,4 +22,7 @@ urlpatterns = [
 	path('firstname_joshua', views.firstname_joshua),
 	path('cooper_no_joshua', views.cooper_no_joshua),
 	path('alexander_or_wyatt', views.alexander_or_wyatt),
+	path('twelve_or_more_players', views.twelve_or_more_players),
+	path('teams_with_sophia', views.teams_with_sophia),
+	path('all_football_players', views.all_football_players),
 ]

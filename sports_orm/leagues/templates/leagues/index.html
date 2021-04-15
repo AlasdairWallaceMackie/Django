@@ -1,48 +1,74 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Sports Leagues</title>
-	</head>
-	<body>
-		<h1>Sort Data</h1>
-		<a href="/">VIEW ALL DATA</a>
-		<a href="/baseball_leagues">baseball_leagues</a>
-		<a href="/womens_leagues">womens_leagues</a>
-		<a href="/hockey_type_leagues">hockey_type_leagues</a>
-		<a href="/leagues_except_football">leagues_except_football</a>
-		<a href="/conference_leagues">conference_leagues</a>
-		<a href="/atlantic_leagues">atlantic_leagues</a>
-		<a href="/dallas_teams">dallas_teams</a>
-		<a href="/raptor_teams">raptor_teams</a>
-		<a href="/city_teams">city_teams</a>
-		<a href="/teams_startswith_t">teams_startswith_t</a>
-		<a href="/allteams_alphabetical_location">allteams_alphabetical_location</a>
-		<a href="/allteams_reverse_alphabetical">allteams_reverse_alphabetical</a>
-		<a href="/lastname_cooper">lastname_cooper</a>
-		<a href="/firstname_joshua">first_name</a>
-		<a href="/cooper_no_joshua">cooper_no_joshua</a>
-		<a href="/alexander_or_wyatt">alexander_or_wyatt</a>
+<head>
+	<title>Sports Leagues</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'script.js' %}"></script>
+</head>
+<body>
+	<h3>Sort Data 1</h3>
+	<a href="/">VIEW ALL DATA</a>
+	<a href="/baseball_leagues">baseball_leagues</a>
+	<a href="/womens_leagues">womens_leagues</a>
+	<a href="/hockey_type_leagues">hockey_type_leagues</a>
+	<a href="/leagues_except_football">leagues_except_football</a>
+	<a href="/conference_leagues">conference_leagues</a>
+	<a href="/atlantic_leagues">atlantic_leagues</a>
+	<a href="/dallas_teams">dallas_teams</a>
+	<a href="/raptor_teams">raptor_teams</a>
+	<a href="/city_teams">city_teams</a>
+	<a href="/teams_startswith_t">teams_startswith_t</a>
+	<a href="/allteams_alphabetical_location">allteams_alphabetical_location</a>
+	<a href="/allteams_reverse_alphabetical">allteams_reverse_alphabetical</a>
+	<a href="/lastname_cooper">lastname_cooper</a>
+	<a href="/firstname_joshua">first_name</a>
+	<a href="/cooper_no_joshua">cooper_no_joshua</a>
+	<a href="/alexander_or_wyatt">alexander_or_wyatt</a>
+	<br>
+	<h3>Sort Data 2</h3>
+	<a href="/twelve_or_more_players">twelve_or_more_players</a>
+	<a href="/teams_with_sophia">teams_with_sophia</a>
+	<a href="/all_football_players">all_football_players</a>
 
-		<a href="{% url 'make_data' %}"><h3>RECREATE DATA</h3></a>
-		
-		
-		<h1>Leagues</h1>
-		<ol>
-			{% for league in leagues %}
-				<li>{{league.name}}</li>
-			{% endfor %}
-		</ol>
-		<h1>Teams</h1>
-		<ol>
-			{% for team in teams %}
+	<a href="{% url 'make_data' %}"><h3>RECREATE DATA</h3></a>
+	
+	
+	<h1>Leagues</h1>
+	<ol>
+		{% for league in leagues %}
+		<a href="leagues/{{league.name}}">
+			<li>{{league.name}}</li>
+		</a>
+		{% endfor %}
+	</ol>
+	<h1>Teams</h1>
+	<ol>
+		{% for team in teams %}
+			<a href="teams/{{team.team_name}}">
 				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ol>
-		<h1>Players</h1>
-		<ol>
-			{% for player in players %}
-				<li>{{player.first_name}} {{player.last_name}}</li>
-			{% endfor %}
-		</ol>
-	</body>
+			</a>
+		{% endfor %}
+	</ol>
+	<h1>Players</h1>
+	<ol>
+		{% for player in players %}
+			<li class="player">
+				{{player.first_name}} {{player.last_name}}
+				
+				<div class="player_info">
+					<h3>{{player.first_name}} {{player.last_name}}</h3>
+					<p>Current team: {{player.curr_team.location}} {{player.curr_team.team_name}}</p>
+					<p>All teams:</p>
+					<ul>
+						{% for team in player.all_teams.all %}
+							<li>{{team.location}} {{team.team_name}}</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</li>
+		{% endfor %}
+	</ol>
+</body>
 </html>

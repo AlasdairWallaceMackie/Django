@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>{{team.location}} {{team.team_name}}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+</head>
+<body>
+    <a href="/"><h4>HOME PAGE</h4></a>
+    <br>
+    <h1>{{team.location}} {{team.team_name}}</h1>
+    <p>League: <a href="/leagues/{{team.league.name}}">{{team.league.name}}</a></p>
+    <h4>Current Players:</h4>
+    <ul>
+        {% for player in team.curr_players.all %}
+                <li class="player">
+                    {{player.first_name}} {{player.last_name}}
+
+                    <div class="player_info">
+                        <h3>{{player.first_name}} {{player.last_name}}</h3>
+                        <p>Current team: {{player.curr_team.location}} {{player.curr_team.team_name}}</p>
+                        <p>All teams:</p>
+                        <ul>
+                            {% for team in player.all_teams.all %}
+                                <li>{{team.location}} {{team.team_name}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
